@@ -4,9 +4,15 @@ angular.module('F1FeederApp.controllers', []).
 controller('driversController', function($scope, ergastAPIservice) {
     $scope.nameFilter = null;
     $scope.driversList = [];
+
     $scope.searchFilter = function (driver) {
         var re = new RegExp($scope.nameFilter, 'i');
         return !$scope.nameFilter || re.test(driver.Driver.givenName) || re.test(driver.Driver.familyName);
+    };
+
+    /* callback for ng-click 'deleteUser': */
+    $scope.deleteDriver = function (driverId) {
+        ergastAPIservice.delete({ id: driverId });
     };
 
     ergastAPIservice.getDrivers().success(function (response) {

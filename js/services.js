@@ -41,9 +41,8 @@ angular.module('F1FeederApp.services', [])
         };
 
         ergastAPI.delete = function(id) {
-            console.log(driver);
+            console.log(id);
         };
-
 
         return ergastAPI;
     });
