@@ -15,6 +15,18 @@ controller('driversController', function($scope, ergastAPIservice) {
     });
 }).
 
+/* Create driver controller */
+controller('createDriverController', ['$scope','ergastAPIservice','$location', function($scope, ergastAPIservice, $location) {
+
+    /* callback for ng-click 'updateDriver': */
+    $scope.createNewDriver = function () {
+        ergastAPIservice.create($scope.driver);
+        $location.path('/drivers');
+    };
+
+}]).
+
+
 /* Driver controller */
 controller('driverController', function($scope, $routeParams, ergastAPIservice) {
     $scope.id = $routeParams.id;
